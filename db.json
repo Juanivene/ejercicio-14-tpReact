@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lastName": "Travolta",
-      "userName": "jtrav",
+      "username": "jtrav",
       "password": "1234abc",
       "isAdmin": true
     }

@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import RootView from "../Views/Routing/RootView";
 import PublicView from "../Views/Routing/PublicView";
 import PrivateView from "../Views/Routing/PrivateView";
-
+import LoginView from "../Views/LoginView";
+import HomeView from "../Views/HomeView";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <p>Home</p>,
+            element: <HomeView />,
           },
           {
             path: "detail/:id",
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "login",
-            element: <p>Login</p>,
+            element: <LoginView />,
           },
           {
             path: "register",
