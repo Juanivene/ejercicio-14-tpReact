@@ -1,16 +1,45 @@
 import { useForm } from "react-hook-form";
 import Input from "../ui/input/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { postLoginFn } from "../../api/auth";
+import { useSession } from "../../Stores/useSession";
 
 const LoginForm = () => {
+  const { login } = useSession(); //zustand
+  const navigate = useNavigate(); //hook de rrd para navegar
+
   const {
     register,
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm();
 
+  const { mutate: postLogin } = useMutation({
+    mutationFn: postLoginFn,
+
+    onSuccess: (userData) => {
+      toast.dismiss();
+      toast.success(`Bienvenido ${userData.firstName}`);
+
+      setTimeout(() => {
+        navigate("/");
+      }, 1200);
+      toast.dismiss();
+
+      login(userData);
+    },
+
+    onError: (e) => {
+      toast.dismiss();
+      toast.warning(e.message);
+    },
+  });
+
   const handleSubmit = (data) => {
-    console.log(data);
+    toast.loading();
+    postLogin(data);
   };
 
   return (
