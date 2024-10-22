@@ -1,6 +1,23 @@
 import { NavLink } from "react-router-dom";
+import { useSession } from "../../Stores/useSession";
+import Swal from "sweetalert2";
 
 const Header = () => {
+  const { user, isLoggedIn, logout } = useSession();
+  const handleLogOut = async () => {
+    const action = await Swal.fire({
+      title: "ATENCION",
+      icon: "info",
+      text: "¿Seguro que quieres cerrar sesion?",
+      confirmButtonText: "Si, salir",
+      cancelButtonText: "No, cancelar",
+      showCancelButton: true,
+    });
+    if (action.isConfirmed) {
+      logout();
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -31,26 +48,35 @@ const Header = () => {
                 Inicio
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) => {
-                  return isActive ? `nav-link activate` : `nav-link`;
-                }}
-                to="/login"
-              >
-                Iniciar sesion
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) => {
-                  return isActive ? `nav-link activate` : `nav-link`;
-                }}
-                to="/admin"
-              >
-                Admin
-              </NavLink>
-            </li>
+            {!isLoggedIn && (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? `nav-link activate` : `nav-link`;
+                  }}
+                  to="/login"
+                >
+                  Iniciar sesion
+                </NavLink>
+              </li>
+            )}
+            {isLoggedIn && user.isAdmin && (
+              <li>
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? `nav-link activate` : `nav-link`;
+                  }}
+                  to="/admin"
+                >
+                  Admin
+                </NavLink>
+              </li>
+            )}
+            {isLoggedIn && (
+              <button className="ms-auto btn btn-danger" onClick={handleLogOut}>
+                Cerrar sesión
+              </button>
+            )}
           </ul>
         </div>
       </div>

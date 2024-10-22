@@ -10,7 +10,7 @@ export const useSession = create((set) => {
         isLoggedIn: true,
       });
     },
-    logout: (set) => {
+    logout: () => { 
       set({
         user: null,
         isLoggedIn: false,
