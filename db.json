@@ -7,6 +7,86 @@
       "username": "jtrav",
       "password": "1234abc",
       "isAdmin": true
+    },
+    {
+      "id": "3007",
+      "firstName": "Juani",
+      "lastName": "Veneziano",
+      "username": "juanivene",
+      "password": "Jufaroju21$",
+      "isAdmin": false
+    },
+    {
+      "id": "e5fd",
+      "firstName": "Juani",
+      "lastName": "Veneziano",
+      "username": "jjuanivene",
+      "password": "Bufarofu21$",
+      "isAdmin": false
+    },
+    {
+      "id": "db00",
+      "firstName": "Juani",
+      "lastName": "Venezianovene",
+      "username": "jtrav",
+      "password": "Bufaro21%",
+      "isAdmin": false
+    },
+    {
+      "id": "dece",
+      "firstName": "Juani",
+      "lastName": "Venezianovene",
+      "username": "jtrav",
+      "password": "Bufaro21%",
+      "isAdmin": false
+    },
+    {
+      "id": "b173",
+      "firstName": "Juani",
+      "lastName": "Venezianovene",
+      "username": "jtrav",
+      "password": "Bufaro21%",
+      "isAdmin": false
+    },
+    {
+      "id": "3a5a",
+      "firstName": "Juani",
+      "lastName": "Venezianovene",
+      "username": "jtrav",
+      "password": "Bufaro21%",
+      "isAdmin": false
+    },
+    {
+      "id": "5ea2",
+      "firstName": "Juani",
+      "lastName": "Veneziano",
+      "username": "juanivenezianor",
+      "password": "Bufaro21%",
+      "isAdmin": false
+    },
+    {
+      "id": "254f",
+      "firstName": "Juani",
+      "lastName": "Veneziano",
+      "username": "juanivene",
+      "password": "Bufaro21%",
+      "isAdmin": false
+    },
+    {
+      "id": "611d",
+      "firstName": "Juani",
+      "lastName": "Veneziano",
+      "username": "juanivene",
+      "password": "Bufaro21%",
+      "isAdmin": false
+    },
+    {
+      "id": "3e60",
+      "firstName": "fabri",
+      "lastName": "Veneziano",
+      "username": "fabrovenepa",
+      "password": "Fabri1%A",
+      "isAdmin": false
     }
   ]
 }

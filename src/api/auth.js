@@ -21,3 +21,29 @@ export const postLoginFn = async (data) => {
 
   return { ...foundUser, password: undefined };
 };
+
+export const postRegisterFn = async (data) => {
+
+  const res = await fetch(`${BACKEND_URL}/users`, {
+    method: `POST`,
+    headers: {
+      "Content-Type": "aplication/json",
+    },
+    body: JSON.stringify({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      username: data.username,
+      password: data.password,
+      isAdmin: false,
+    }),
+  });
+  if (!res.ok) {
+    throw new Error("ocurrio un error al hacer el registro");
+  }
+  return {
+    firstName: data.firstName,
+    lastName: data.lastName,
+    username: data.username,
+    isAdmin: false,
+  };
+};
