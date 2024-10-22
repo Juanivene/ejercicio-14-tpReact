@@ -7,7 +7,25 @@ export const postBlogFn = async (data) => {
     },
     body: JSON.stringify(data),
   });
-  if(!res.ok){
-    throw new Error("Ocurrio un error al guardar la entrada")
+  if (!res.ok) {
+    throw new Error("Ocurrio un error al guardar la entrada");
+  }
+};
+
+export const getBlogsFn = async () => {
+  const res = await fetch(`${BACKEND_URL}/blogs`);
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error("Ocurrio un error al obtener las entrada el blog");
+  }
+  return data;
+};
+
+export const deleteBlogFn = async (blogId) => {
+  const res = await fetch(`${BACKEND_URL}/blogs/${blogId}`, {
+    method: "DELETE",
+  });
+  if (!res.ok) {
+    throw new Error("No se pudo eliminar");
   }
 };

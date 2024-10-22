@@ -46,7 +46,7 @@ const AdminForm = () => {
       <Input
         className="mb-2"
         label="Titulo"
-        name="Title"
+        name="title"
         register={register}
         error={errors.title}
         placeHolder="Pure de manzana"
