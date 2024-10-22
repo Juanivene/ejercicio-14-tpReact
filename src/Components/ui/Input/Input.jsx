@@ -10,7 +10,24 @@ const Input = (props) => {
     register,
     options,
     placeHolder = "Ingrese un texto",
+    textArea = false,
   } = props;
+
+  if (textArea) {
+    return (
+      <fieldset className={`form-floating ${className}`}>
+        <textarea
+          className={`form-control ${error ? `is-invalid` : ``}`}
+          id={`${name}-input`}
+          placeholder={placeHolder}
+          type={type}
+          {...register(name, options)}
+        />
+        <label htmlFor={`${name}-input`}>{label}</label>
+        <div className="invalid-feedback">{error?.message}</div>
+      </fieldset>
+    );
+  }
 
   return (
     <fieldset className={`form-floating ${className}`}>
@@ -37,4 +54,5 @@ Input.propTypes = {
   register: PropTypes.func.isRequired,
   options: PropTypes.object,
   placeHolder: PropTypes.string,
+  textArea: PropTypes.bool,
 };

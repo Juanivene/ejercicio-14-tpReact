@@ -88,5 +88,13 @@
       "password": "Fabri1%A",
       "isAdmin": false
     }
+  ],
+  "blogs": [
+    {
+      "id": "dbd3",
+      "Title": "papas",
+      "imageUrl": "papitas",
+      "content": "ppppppppppppppppppaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
   ]
 }
