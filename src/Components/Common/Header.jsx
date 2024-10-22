@@ -48,7 +48,7 @@ const Header = () => {
                 Inicio
               </NavLink>
             </li>
-            {!isLoggedIn && (
+            {/* {!isLoggedIn && ( */}
               <li className="nav-item">
                 <NavLink
                   className={({ isActive }) => {
@@ -59,8 +59,8 @@ const Header = () => {
                   Iniciar sesion
                 </NavLink>
               </li>
-            )}
-            {isLoggedIn && user.isAdmin && (
+            {/* )} */}
+            {/* {isLoggedIn && user.isAdmin && ( */}
               <li>
                 <NavLink
                   className={({ isActive }) => {
@@ -71,7 +71,7 @@ const Header = () => {
                   Admin
                 </NavLink>
               </li>
-            )}
+            {/* )} */}
             {isLoggedIn && (
               <button className="ms-auto btn btn-danger" onClick={handleLogOut}>
                 Cerrar sesión
