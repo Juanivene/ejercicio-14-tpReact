@@ -31,7 +31,7 @@ export const deleteBlogFn = async (blogId) => {
   }
 };
 
-export const putBlogFn = async ({blogId, data}) => {
+export const putBlogFn = async ({ blogId, data }) => {
   console.log(data);
   const res = await fetch(`${BACKEND_URL}/blogs/${blogId}`, {
     method: "PUT",
@@ -43,4 +43,13 @@ export const putBlogFn = async ({blogId, data}) => {
   if (!res.ok) {
     throw new Error("No se pudo editar");
   }
+};
+
+export const getBlogFn = async (blogId) => {
+  const res = await fetch(`${BACKEND_URL}/blogs/${blogId}`);
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error("Ocurrio un error al obtener la entrada del blog seleccionado");
+  }
+  return data;
 };

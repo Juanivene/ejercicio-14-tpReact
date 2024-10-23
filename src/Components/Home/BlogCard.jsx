@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const BlogCard = (props) => {
   const { blog } = props;
@@ -14,9 +15,7 @@ const BlogCard = (props) => {
         <h5 className="card-title">{blog.title}</h5>
         <p className="card-text">{blog.description}</p>
         <p className="text-muted">Por: {blog.author}</p>
-        <a href={`/blog/${blog.id}`} className="btn btn-primary">
-          Leer más
-        </a>
+        <Link to={`/detail/${blog.id}`}>vamos</Link>
       </div>
     </div>
   );

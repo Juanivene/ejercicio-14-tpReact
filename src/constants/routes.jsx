@@ -6,6 +6,7 @@ import HomeView from "../Views/HomeView";
 import AuthView from "../Views/Routing/AuthView";
 import RegisterView from "../Views/RegisterView";
 import AdminView from "../Views/AdminView";
+import DtailView from "../Views/DtailView";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "detail/:id",
-        element: <p>Detalle</p>,
+        element: <DtailView />,
       },
 
       //autenticacion
