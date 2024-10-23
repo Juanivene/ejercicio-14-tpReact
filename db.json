@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "firstName": "John",
       "lastName": "Travolta",
       "username": "jtrav",
@@ -91,10 +91,16 @@
   ],
   "blogs": [
     {
-      "id": "9484",
-      "title": "papapapa",
-      "imageUrl": "ápalsndponapdna",
-      "content": "oidhosnfh<fs<hfphp9urew"
+      "title": "Milanesa pure",
+      "imageUrl": "https://www.cucinare.tv/wp-content/uploads/2023/07/milaconpure.jpg",
+      "content": "\n    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a2020859:4069:5)\n    at Outlet (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a2020859:4444:26)\n    at main\n    at RootView\n    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a2020859:4069:5)\n    at RenderErrorBoundary (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=a2020859:4029:5)",
+      "id": "9279"
+    },
+    {
+      "id": "1901",
+      "title": "Empanadas",
+      "imageUrl": "https://assets.elgourmet.com/wp-content/uploads/2023/03/cover_fpa6sn8vqc_empanadas-1024x683.jpg.webp",
+      "content": "Empanaitas de carne,queso,pollo,ternera"
     }
   ]
 }

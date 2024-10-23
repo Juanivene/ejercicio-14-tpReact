@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import Input from "../ui/input/input";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { postBlogFn } from "../../api/blog";
+import { postBlogFn, putBlogFn } from "../../api/blog";
+import { useBlog } from "../../Stores/useBlog";
 
 const AdminForm = () => {
   const {
@@ -10,10 +11,36 @@ const AdminForm = () => {
     handleSubmit: onSubmitRHF,
     reset,
     formState: { errors },
+    setValue,
   } = useForm();
-
-  const queryClient = useQueryClient();
   //
+  const { blogToEdit, clearBlogToEdit } = useBlog();
+  if (blogToEdit) {
+    setValue("title", blogToEdit.title);
+    setValue("imageUrl", blogToEdit.imageUrl);
+    setValue("content", blogToEdit.content);
+  }
+  //
+  const queryClient = useQueryClient();
+  //PUT
+  const { mutate: putBlog } = useMutation({
+    mutationFn: putBlogFn,
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Entrada actualizada");
+      reset();
+      clearBlogToEdit();
+      //actualiza la info perri
+      queryClient.invalidateQueries({
+        queryKey: ["blogs"],
+      });
+    },
+    onError: (e) => {
+      toast.dismiss();
+      toast.warning(e.message);
+    },
+  });
+  //POST
   const { mutate: postBlog } = useMutation({
     mutationFn: postBlogFn,
     onSuccess: () => {
@@ -33,7 +60,17 @@ const AdminForm = () => {
 
   const handleSubmit = (data) => {
     toast.loading("Guardando..");
-    postBlog(data);
+
+    if (blogToEdit) {
+      putBlog({blogId:blogToEdit.id, data});
+    } else {
+      postBlog(data);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    clearBlogToEdit();
+    reset();
   };
 
   return (
@@ -43,6 +80,11 @@ const AdminForm = () => {
     >
       <h1>Cear nueva entrada</h1>
       <hr />
+      {blogToEdit && (
+        <div className="alert alert-warning">
+          Atencion , estas modificando la entrada: {blogToEdit.title}
+        </div>
+      )}
       <Input
         className="mb-2"
         label="Titulo"
@@ -87,12 +129,17 @@ const AdminForm = () => {
             message: "El contenido debe tener al menos 5 caracteres",
           },
           maxLength: {
-            value: 100,
+            value: 1000,
             message: "Debe tener como maximo 100 caracteres",
           },
         }}
       />
       <div className="mt-3 text-end">
+        {blogToEdit && (
+          <button className="btn" onClick={handleCancelEdit}>
+            Cancelar edicion
+          </button>
+        )}
         <button type="submit" className="btn btn-danger">
           Cargar
         </button>

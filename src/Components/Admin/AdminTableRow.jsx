@@ -3,9 +3,12 @@ import PropTypes from "prop-types";
 import { toast } from "sonner";
 import Swal from "sweetalert2";
 import { deleteBlogFn } from "../../api/blog";
+import { useBlog } from "../../Stores/useBlog";
 
 const AdminTableRow = (props) => {
   const { blog, i } = props;
+
+  const { setBlogToEdit } = useBlog();
 
   const queryClient = useQueryClient();
   //
@@ -36,11 +39,13 @@ const AdminTableRow = (props) => {
     }).then((res) => {
       if (res.isConfirmed) {
         toast.loading("Eliminando");
-        deleteBlog(blog.id)
+        deleteBlog(blog.id);
       }
     });
   };
-  const handleEdit = () => {};
+  const handleEdit = () => {
+    setBlogToEdit(blog)
+  };
   return (
     <tr>
       <td>{i + 1}</td>
