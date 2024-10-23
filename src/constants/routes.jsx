@@ -7,6 +7,7 @@ import AuthView from "../Views/Routing/AuthView";
 import RegisterView from "../Views/RegisterView";
 import AdminView from "../Views/AdminView";
 import DtailView from "../Views/DtailView";
+import ViewError from "../Views/ViewError";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
             element: <AdminView />,
           },
         ],
+      },
+      {
+        path: "*",
+        element: <ViewError />,
       },
     ],
   },
